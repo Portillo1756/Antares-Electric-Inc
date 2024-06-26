@@ -55,3 +55,54 @@
   border: solid;
   background-color: #4B0082;
 }
+
+.swim-lane {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f4f4f4;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  border-radius: 4px;
+  width: 225px;
+  min-height: 120px;
+  flex-shrink: 0;
+}
+
+.taskRM {
+  background: red;
+  color: #ffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: move;
+}
+
+.taskHW {
+  background: yellow;
+  color: black;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: move;
+}
+
+.taskPF {
+  background: blue;
+  color: #ffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: move;
+}
+
+.is-dragging {
+  scale: 1.05;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: rgb(50, 50, 50);
+  color: white;
+
+}

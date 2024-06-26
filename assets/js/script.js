@@ -9,12 +9,14 @@ function createTaskCard(task) {
 }
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+  
 }
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
 }
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
+  
 }
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
@@ -24,7 +26,7 @@ $(document).ready(function () {
     $( "#datePicker" ).datepicker();
 });
 
-
+if (Project.dueDate && project.status !== 'done')
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -55,8 +57,8 @@ window.onclick = function(event) {
 }
 
 // when the user press it it has to created the block
-// button.onclick = function(task description) {
-//   if (event.target == task description) {
-//     modal.style.display = "block";
-//   }
-// }
+button.onclick = function(task description) {
+  if (event.target == task description) {
+    modal.style.display = "block";
+  }
+}
