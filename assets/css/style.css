@@ -1,6 +1,5 @@
-/* The Modal (background) */
+The Modal (background)
 .container {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -10,6 +9,13 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .modal {
+    display: none;
+    background-color: #fff;
+    width: 600px;
+    height: 600px;
   }
   
   /* Modal Content/Box */
@@ -67,42 +73,4 @@
   width: 225px;
   min-height: 120px;
   flex-shrink: 0;
-}
-
-.taskRM {
-  background: red;
-  color: #ffff;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: move;
-}
-
-.taskHW {
-  background: yellow;
-  color: black;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: move;
-}
-
-.taskPF {
-  background: blue;
-  color: #ffff;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: move;
-}
-
-.is-dragging {
-  scale: 1.05;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-  background: rgb(50, 50, 50);
-  color: white;
-
 }
