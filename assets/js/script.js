@@ -33,6 +33,7 @@ function createTaskCard(task) {
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
   $("#todo-cards").empty()
+  $()
   for(let i =0; i < taskList.length; i++) {
     let newCard = createTaskCard(taskList[i])
     $("#todo-cards").append(newCard)
@@ -50,6 +51,7 @@ function handleAddTask(event){
   const taskDescription = document.getElementById("description").value;
   const taskDueDate = document.getElementById("datePicker").value;
   const toDoObject = {taskTitle, taskDescription, taskDueDate, id}
+  console.log("task", toDoObject)
   taskList.push(toDoObject)
   console.log(taskList)
   localStorage.setItem("tasks", JSON.stringify(taskList))
@@ -59,21 +61,34 @@ function handleAddTask(event){
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
-  const x = event.target.dataset.taskId
-  console.log(x)
-  let box = taskList.filter( task => task.id != x)
-  console.log(event.target)
-  localStorage.setItem('tasks', JSON.stringify(box))
-  renderTaskList()
+  const x = event.target.dataset.taskid
+  let newTaskList = taskList.filter( task => task.id != x)
+  localStorage.setItem('tasks', JSON.stringify(newTaskList))
+  window.location.reload()
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
+  const status = event.target.id
+  const TaskID = ui.draggable[0].dataset.projectId
+  console.log(status)
+  console.log(TaskID)
+  for(let task of taskList) {
+    if (task.id === parseInt(TaskID)) {
+      task.status = status
+    }
+  }
+  localStorage.setItem('tasks', JSON.stringify(taskList) )
+  renderTaskList()
 }
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
     $( "#datePicker" ).datepicker();
+    $(".lane").droppable({
+      accept: ".draggable",
+      drop: handleDrop
+    })
 });
 
 // if (Project.dueDate && project.status !== 'done')
@@ -108,3 +123,5 @@ window.onclick = function(event) {
 
 const summitButton = document.getElementById("Button");
   summitButton.addEventListener("click", handleAddTask)
+
+  renderTaskList()
