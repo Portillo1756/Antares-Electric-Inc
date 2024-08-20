@@ -32,14 +32,28 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-  $("#todo-cards").empty()
-  $()
-  for(let i =0; i < taskList.length; i++) {
-    let newCard = createTaskCard(taskList[i])
-    $("#todo-cards").append(newCard)
+  const toDoList = $("#todo-cards")
+  toDoList.empty()
+  const progress = $("#in-progress-cards")
+  progress.empty()
+  const doneCard = $("#done-cards")
+  doneCard.empty()
+ 
+  // 
+  for(let task of taskList) {
+    if (task.status === "to-do") {
+      toDoList.append(createTaskCard(task))
+    } else if (task.status === "in-progress") {
+      progress.append(createTaskCard(task))
+    } else if (task.status === "done") {
+      doneCard.append(createTaskCard(task))
+    }
   }
   $( ".draggable").draggable({
-    appendTo: "body"
+    appendTo: "body", 
+    revert: "invalid",
+    stack: ".draggable",
+    containment: "document"
   });
 }
 
@@ -50,7 +64,8 @@ function handleAddTask(event){
   const taskTitle = document.getElementById("task-title").value;
   const taskDescription = document.getElementById("description").value;
   const taskDueDate = document.getElementById("datePicker").value;
-  const toDoObject = {taskTitle, taskDescription, taskDueDate, id}
+  const status = "to-do";
+  const toDoObject = {taskTitle, taskDescription, taskDueDate, id, status}
   console.log("task", toDoObject)
   taskList.push(toDoObject)
   console.log(taskList)
