@@ -66,9 +66,7 @@ function handleAddTask(event){
   const taskDueDate = document.getElementById("datePicker").value;
   const status = "to-do";
   const toDoObject = {taskTitle, taskDescription, taskDueDate, id, status}
-  console.log("task", toDoObject)
   taskList.push(toDoObject)
-  console.log(taskList)
   localStorage.setItem("tasks", JSON.stringify(taskList))
   createTaskCard(toDoObject)
   renderTaskList()
@@ -86,8 +84,6 @@ function handleDeleteTask(event){
 function handleDrop(event, ui) {
   const status = event.target.id
   const TaskID = ui.draggable[0].dataset.projectId
-  console.log(status)
-  console.log(TaskID)
   for(let task of taskList) {
     if (task.id === parseInt(TaskID)) {
       task.status = status
